@@ -23,7 +23,11 @@
   width: 640px;
   height: 460px;
   transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, var(--color-accent-glow) 0%, transparent 68%);
+  background: radial-gradient(
+    ellipse at center,
+    var(--color-accent-glow) 0%,
+    transparent 68%
+  );
 }
 .page::after {
   bottom: -18%;
@@ -129,18 +133,19 @@
 .bioGroup p {
   margin: 0;
   font-size: 1.02rem;
+  font-weight: 300;
   line-height: 1.55;
-  color: var(--color-ink-secondary);
 }
 .bioGroup p:first-child {
   color: var(--color-ink);
 }
 .flourish {
   font-family: var(--font-instrument-serif), Georgia, serif;
+  color: var(--color-accent);
+  font-size: 1.02rem;
   font-style: italic;
-  font-size: 1.3em;
   line-height: 1;
-  color: var(--color-ink);
+  letter-spacing: 1px;
 }
 
 .links {
@@ -206,17 +211,47 @@
 }
 
 .tag {
-  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
-  font-size: 0.8rem;
-  font-weight: 500;
+  width: 1.15rem;
+  height: 1.15rem;
   color: var(--color-ink-tertiary);
-  width: 2.1ch;
   flex-shrink: 0;
   transition: color 220ms var(--ease-editorial);
 }
 .linkRow:hover .tag,
 .linkRow:focus-visible .tag {
   color: var(--color-accent);
+}
+
+.miniMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 6px;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-rule);
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 0.6rem;
+  color: var(--color-ink-tertiary);
+  transition:
+    color 220ms var(--ease-editorial),
+    border-color 220ms var(--ease-editorial);
+}
+.miniMarkStroke {
+  width: 2px;
+  height: 0.7em;
+  border-radius: 1px;
+  background: currentColor;
+  display: inline-block;
+  transition: background-color 220ms var(--ease-editorial);
+}
+.linkRow:hover .miniMark,
+.linkRow:focus-visible .miniMark {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .rowText {

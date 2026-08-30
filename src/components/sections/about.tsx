@@ -1,5 +1,6 @@
 import { profile } from "@/data/profile";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { HighlightedText } from "@/components/ui/highlighted-text";
 
 export function About() {
   return (
@@ -12,10 +13,10 @@ export function About() {
 
         <p className="font-accent text-2xl italic text-ink">Un poco de contexto.</p>
 
-        <div className="mt-6 max-w-2xl space-y-6">
+        <div className="mt-6 space-y-6">
           {profile.aboutParagraphs.map((paragraph, i) => (
-            <p key={i} className="text-lg text-ink-secondary">
-              {paragraph}
+            <p key={i} className="text-lg text-ink-secondary font-light">
+              <HighlightedText text={paragraph} />
             </p>
           ))}
         </div>

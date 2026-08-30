@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { profile } from "@/data/profile";
+import { DownloadIcon } from "@/components/icons/download-icon";
+import { GithubIcon } from "@/components/icons/github-icon";
+import { LinkedinIcon } from "@/components/icons/linkedin-icon";
+import { XIcon } from "@/components/icons/x-icon";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -7,30 +11,39 @@ export const metadata: Metadata = {
   description: `Enlaces de contacto de ${profile.name}.`,
 };
 
+function MonogramMark({ className }: { className?: string }) {
+  return (
+    <span className={`${styles.miniMark} ${className ?? ""}`} aria-hidden="true">
+      J<span className={styles.miniMarkStroke} />D
+    </span>
+  );
+}
+
 const links = [
   {
-    tag: "PF",
-    title: "Portfolio",
-    subtitle: "Experiencia Profesional",
-    href: "/",
+    title: "CV",
+    subtitle: "Descargar PDF",
+    href: profile.cvHref,
+    download: true,
+    Icon: DownloadIcon,
   },
   {
-    tag: "GH",
     title: "GitHub",
     subtitle: "@joandiazestigarribia",
     href: profile.social.github,
+    Icon: GithubIcon,
   },
   {
-    tag: "IN",
     title: "LinkedIn",
     subtitle: "Perfil profesional",
     href: profile.social.linkedin,
+    Icon: LinkedinIcon,
   },
   {
-    tag: "X",
     title: "X",
     subtitle: "@joandefined",
     href: profile.social.x,
+    Icon: XIcon,
   },
 ];
 
@@ -45,10 +58,6 @@ export default function LinksPage() {
             <span>D</span>
           </div>
           <h1 className={styles.name}>{profile.name}</h1>
-          <span className={styles.status}>
-            <span className={styles.dot} />
-            {"// escribiendo código"}
-          </span>
         </div>
 
         <div className={styles.bioGroup}>
@@ -61,15 +70,33 @@ export default function LinksPage() {
 
         <nav className={styles.links} aria-label="Redes y contacto">
           <ul>
-            {links.map(({ tag, title, subtitle, href }) => (
-              <li key={tag}>
+            <li>
+              <a
+                className={styles.linkRow}
+                href="/"
+                target="_blank"
+                rel="me noopener noreferrer"
+              >
+                <MonogramMark className={styles.tag} />
+                <span className={styles.rowText}>
+                  <span className={styles.rowTitle}>Portfolio</span>
+                  <span className={styles.rowSub}>Experiencia Profesional</span>
+                </span>
+                <span className={styles.rowArrow} aria-hidden="true">
+                  →
+                </span>
+              </a>
+            </li>
+            {links.map(({ title, subtitle, href, download, Icon }) => (
+              <li key={title}>
                 <a
                   className={styles.linkRow}
                   href={href}
                   target="_blank"
                   rel="me noopener noreferrer"
+                  download={download}
                 >
-                  <span className={styles.tag}>{tag}</span>
+                  <Icon className={styles.tag} />
                   <span className={styles.rowText}>
                     <span className={styles.rowTitle}>{title}</span>
                     <span className={styles.rowSub}>{subtitle}</span>

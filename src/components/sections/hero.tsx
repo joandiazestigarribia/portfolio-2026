@@ -1,5 +1,6 @@
 import { profile } from "@/data/profile";
 import { socialLinks } from "@/data/social-links";
+import { HighlightedText } from "@/components/ui/highlighted-text";
 
 export function Hero() {
   return (
@@ -28,7 +29,7 @@ export function Hero() {
           className="animate-rise-in mt-10 max-w-3xl text-lg text-ink-secondary md:text-xl font-light"
           style={{ animationDelay: "160ms" }}
         >
-          {profile.thesis}
+          <HighlightedText text={profile.thesis} />
         </p>
 
         <div

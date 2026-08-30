@@ -3,14 +3,14 @@ import { SectionHeading } from "@/components/ui/section-heading";
 
 export function Contact() {
   return (
-    <section id="contacto" className="scroll-mt-20 px-6 py-24 md:px-24 md:pt-32 pb-75">
+    <section id="contacto" className="scroll-mt-20 px-6 py-24 md:px-24 md:pt-32 pb-35 2xl:pb-55">
       <div className="mx-auto max-w-4xl">
         <SectionHeading title="Contacto" />
 
         <h2 className="max-w-xl font-display text-3xl font-extrabold leading-tight text-ink md:text-4xl">
           ¿Hablamos?
         </h2>
-        <p className="mt-3 max-w-xl text-lg text-ink-secondary">
+        <p className="mt-3 max-w-xl text-lg text-ink-secondary font-light">
           Si tenés una idea, un proyecto o querés charlar de código, escribime.
         </p>
 

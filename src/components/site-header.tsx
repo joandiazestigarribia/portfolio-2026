@@ -6,6 +6,7 @@ const sections = [
   { id: "inicio", label: "Inicio" },
   { id: "experiencia", label: "Experiencia" },
   { id: "sobre-mi", label: "Sobre mí" },
+  { id: "recomendaciones", label: "Recomendaciones" },
   { id: "contacto", label: "Contacto" },
 ];
 
@@ -13,32 +14,38 @@ export function SiteHeader() {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
-    const visibleIds = new Set<string>();
+    const elements = sections
+      .map(({ id }) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            visibleIds.add(entry.target.id);
-          } else {
-            visibleIds.delete(entry.target.id);
-          }
+    let ticking = false;
+
+    function updateActive() {
+      ticking = false;
+      const referenceLine = window.innerHeight * 0.25;
+      let current: string | null = null;
+      for (const el of elements) {
+        if (el.getBoundingClientRect().top <= referenceLine) {
+          current = el.id;
         }
-
-        const current = sections.find(({ id }) => visibleIds.has(id));
-        if (current) {
-          setActiveId(current.id);
-        }
-      },
-      { rootMargin: "-15% 0px -60% 0px", threshold: 0 }
-    );
-
-    for (const { id } of sections) {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
+      }
+      if (current) setActiveId(current);
     }
 
-    return () => observer.disconnect();
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateActive);
+      }
+    }
+
+    updateActive();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
