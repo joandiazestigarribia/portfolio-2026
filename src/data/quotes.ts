@@ -16,7 +16,7 @@ export const quotes: Quote[] = [
   {
     id: "design",
     quote:
-      "Lorem ipsum dolor sit amet consectetur adipiscing elit sodales, feugiat duis habitant sem laoreet inceptos placerat, per non magna lectus quam class eros. Tellus nec velit nulla litora aliquet malesuada fusce accumsan.",
+      "Tuve la oportunidad de trabajar junto a Joan en varios proyectos y su aporte fue clave para lograr resultados de gran calidad. Quiero remarcar su **atención al detalle**, desarrollando proyectos de manera impecable. Además de su talento técnico, aporta siempre una actitud colaborativa y proactiva, generando un ambiente de trabajo positivo y resolviendo desafíos con creatividad. Recomiendo plenamente a Joan para cualquier desafío que enfrente, es un profesional comprometido, innovador y orientado a resultados, aparte de tener **una gran calidad humana**.",
     name: "Josefina Martinet",
     role: "UX/UI Designer",
   },
