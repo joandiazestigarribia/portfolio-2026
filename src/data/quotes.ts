@@ -23,7 +23,7 @@ export const quotes: Quote[] = [
   {
     id: "dev1",
     quote:
-      "Lorem ipsum dolor sit amet consectetur adipiscing elit sodales, feugiat duis habitant sem laoreet inceptos placerat, per non magna lectus quam class eros. Tellus nec velit nulla litora aliquet malesuada fusce accumsan, mattis a pulvinar fermentum hendrerit potenti in quisque facilisi, vitae mollis ut ornare diam taciti sollicitudin.",
+      "Joan es un excelente profesional, es de esas personas que hacen que trabajar en equipo sea mucho más fácil. Destaco especialmente su capacidad técnica como desarrollador, su criterio a la hora de resolver problemas y la predisposición que siempre tiene para **dar una mano, compartir conocimiento** o buscar una solución en conjunto. Pero más allá de lo técnico, algo que realmente valoro de Joan es su buena onda y la forma en la que se relaciona con el equipo, una persona colaborativa y siempre dispuesto a aportar. un gran compañero y una persona con la que da gusto trabajar. Sin dudas, alguien que **suma muchísimo tanto desde lo profesional como desde lo humano**.",
     name: "Nahuel Leguizamon",
     role: "Frontend Developer",
   },

@@ -10,8 +10,80 @@ const sections = [
   { id: "contacto", label: "Contacto" },
 ];
 
+function NavItem({
+  id,
+  label,
+  isActive,
+  onNavigate,
+  className,
+}: {
+  id: string;
+  label: string;
+  isActive: boolean;
+  onNavigate?: () => void;
+  className?: string;
+}) {
+  function handleClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    e.preventDefault();
+    onNavigate?.();
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      history.pushState(null, "", `#${id}`);
+    }, 0);
+  }
+
+  return (
+    <li>
+      <a
+        href={`#${id}`}
+        onClick={handleClick}
+        aria-current={isActive ? "location" : undefined}
+        className={`flex items-center gap-2 transition-colors ${
+          isActive ? "text-accent" : "text-ink-tertiary hover:text-ink"
+        } ${className ?? ""}`}
+      >
+        <span
+          aria-hidden="true"
+          className={`h-1.5 w-1.5 rounded-full bg-accent transition-opacity ${
+            isActive ? "opacity-100" : "opacity-0"
+          }`}
+        />
+        {label}
+      </a>
+    </li>
+  );
+}
+
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      aria-hidden="true"
+      className="size-5"
+    >
+      {open ? (
+        <>
+          <line x1="6" y1="6" x2="18" y2="18" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+        </>
+      ) : (
+        <>
+          <line x1="4" y1="7" x2="20" y2="7" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="17" x2="20" y2="17" />
+        </>
+      )}
+    </svg>
+  );
+}
+
 export function SiteHeader() {
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const elements = sections
@@ -48,6 +120,15 @@ export function SiteHeader() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setIsMenuOpen(false);
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isMenuOpen]);
+
   return (
     <header className="sticky top-0 z-10 border-b border-rule bg-paper/90 backdrop-blur">
       <div className="mx-auto flex max-w-4xl items-center justify-between py-4">
@@ -61,33 +142,42 @@ export function SiteHeader() {
           <span>D</span>
         </a>
 
-        <nav aria-label="Secciones">
+        <nav aria-label="Secciones" className="hidden md:block">
           <ul className="flex items-center gap-4 font-mono text-sm md:gap-6">
-            {sections.map(({ id, label }) => {
-              const isActive = activeId === id;
-              return (
-                <li key={id}>
-                  <a
-                    href={`#${id}`}
-                    aria-current={isActive ? "location" : undefined}
-                    className={`flex items-center gap-2 transition-colors ${
-                      isActive ? "text-accent" : "text-ink-tertiary hover:text-ink"
-                    }`}
-                  >
-                    <span
-                      aria-hidden="true"
-                      className={`h-1.5 w-1.5 rounded-full bg-accent transition-opacity ${
-                        isActive ? "opacity-100" : "opacity-0"
-                      }`}
-                    />
-                    {label}
-                  </a>
-                </li>
-              );
-            })}
+            {sections.map(({ id, label }) => (
+              <NavItem key={id} id={id} label={label} isActive={activeId === id} />
+            ))}
           </ul>
         </nav>
+
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-nav"
+          aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+          className="flex h-9 w-9 shrink-0 items-center justify-center text-ink-tertiary transition-colors hover:text-ink md:hidden"
+        >
+          <MenuIcon open={isMenuOpen} />
+        </button>
       </div>
+
+      {isMenuOpen && (
+        <nav aria-label="Secciones" id="mobile-nav" className="border-t border-rule md:hidden">
+          <ul className="flex flex-col font-mono text-sm">
+            {sections.map(({ id, label }) => (
+              <NavItem
+                key={id}
+                id={id}
+                label={label}
+                isActive={activeId === id}
+                onNavigate={() => setIsMenuOpen(false)}
+                className="px-6 py-3"
+              />
+            ))}
+          </ul>
+        </nav>
+      )}
     </header>
   );
 }
