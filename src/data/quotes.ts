@@ -9,7 +9,7 @@ export const quotes: Quote[] = [
   {
     id: "pm",
     quote:
-      "Como su líder, me da muchísimo orgullo recomendar a Joan. Es de esas personas que querés tener siempre en tu equipo: no solo es impecable en lo técnico y le busca la vuelta a todo hasta encontrar la solución, sino que además tiene una calidez humana enorme. Es responsable, respetuoso y siempre está para dar una mano a sus compañeros cuando lo necesitan. Trabajar con él te da esa tranquilidad de saber que las cosas van a salir bien y que, además, la vamos a pasar bien en el proceso. Joan no solo suma por todo lo que sabe y resuelve, sino por la gran persona que es. Lo recomiendo con absoluta confianza para cualquier reto que busque excelencia y gran valor humano.",
+      "Como su líder, me da muchísimo orgullo recomendar a Joan. Es de esas personas que **querés tener siempre en tu equipo**: no solo es impecable en lo técnico y le busca la vuelta a todo hasta encontrar la solución, sino que además tiene una calidez humana enorme. Es responsable, respetuoso y siempre está para dar una mano a sus compañeros cuando lo necesitan. Trabajar con él te da esa tranquilidad de saber que las cosas van a salir bien y que, además, la vamos a pasar bien en el proceso. Joan no solo suma por todo lo que sabe y resuelve, sino por la gran persona que es. **Lo recomiendo con absoluta confianza** para cualquier reto que busque excelencia y gran valor humano.",
     name: "Daiana Kovacs",
     role: "Project Manager",
   },
