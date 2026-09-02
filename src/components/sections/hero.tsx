@@ -13,7 +13,7 @@ export function Hero() {
           className="animate-rise-in font-mono text-sm text-ink-tertiary"
           style={{ animationDelay: "0ms" }}
         >
-          {profile.role} · {profile.location}
+          {profile.role} · {profile.experienceYears}
         </p>
 
         <h1

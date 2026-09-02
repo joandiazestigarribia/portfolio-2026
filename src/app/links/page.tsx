@@ -109,8 +109,6 @@ export default function LinksPage() {
             ))}
           </ul>
         </nav>
-
-        <p className={styles.meta}>Resistencia, Chaco · Argentina</p>
       </div>
     </div>
   );

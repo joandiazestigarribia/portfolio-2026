@@ -16,8 +16,8 @@ export const experience: ExperienceEntry[] = [
     startDate: "2021-09",
     endDate: "present",
     summary:
-      "Trabajo en el frontend y backend de plataformas de ecommerce con tráfico alto, donde la performance se presta mucha atención. Armo componentes reutilizables con React, TypeScript y Node, integro todo vía REST y GraphQL, y participo en las decisiones técnicas del equipo, code reviews incluidos. Más de una vez terminé liderando cuando hizo falta.",
-    tags: ["React", "Next.js", "TypeScript", "GraphQL", "REST APIs", "VTEX IO"],
+      "Trabajo en el frontend y backend de plataformas de ecommerce con tráfico alto, donde se presta mucha atención a la performance. Armo componentes reutilizables con React, TypeScript y Node, integro todo vía REST y GraphQL, y participo en las decisiones técnicas del equipo, code reviews incluidos. Más de una vez terminé liderando cuando hizo falta.",
+    tags: ["React", "Next.js", "TypeScript", "Node.js", "GraphQL", "REST APIs", "VTEX IO"],
   },
   {
     id: "independent-fullstack",
