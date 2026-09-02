@@ -131,7 +131,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-10 border-b border-rule bg-paper/90 backdrop-blur">
-      <div className="mx-auto flex max-w-4xl items-center justify-between py-4">
+      <div className="mx-auto flex max-w-4xl items-center justify-between py-4 px-6 md:px-0">
         <a
           href="#inicio"
           aria-label="Volver arriba"
@@ -163,7 +163,11 @@ export function SiteHeader() {
       </div>
 
       {isMenuOpen && (
-        <nav aria-label="Secciones" id="mobile-nav" className="border-t border-rule md:hidden">
+        <nav
+          aria-label="Secciones"
+          id="mobile-nav"
+          className="absolute inset-x-0 top-full border-t border-rule bg-paper/95 backdrop-blur md:hidden"
+        >
           <ul className="flex flex-col font-mono text-sm">
             {sections.map(({ id, label }) => (
               <NavItem

@@ -50,7 +50,7 @@ export function Hero() {
             CV ↓
           </a>
 
-          <div className="flex items-center gap-4 border-l border-rule pl-6">
+          <div className="flex items-center gap-4 md:border-l border-rule md:pl-6">
             {socialLinks.map(({ label, href, Icon }) => (
               <a
                 key={label}
@@ -58,7 +58,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer me"
                 aria-label={label}
-                className="text-ink-tertiary transition-colors hover:text-accent"
+                className="p-2 text-ink-tertiary transition-colors hover:text-accent md:p-0"
               >
                 <Icon className="size-4" />
               </a>

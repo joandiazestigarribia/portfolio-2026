@@ -24,10 +24,26 @@ export const metadata: Metadata = {
   },
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  url: siteUrl,
+  jobTitle: profile.role,
+  description: profile.summary,
+  sameAs: [profile.social.github, profile.social.linkedin, profile.social.x],
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es-AR" className={fontVariables}>
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

@@ -18,7 +18,7 @@ export function SiteFooter() {
               target="_blank"
               rel="noopener noreferrer me"
               aria-label={label}
-              className="text-ink-tertiary transition-colors hover:text-accent"
+              className="p-2 text-ink-tertiary transition-colors hover:text-accent md:p-0"
             >
               <Icon className="size-4" />
             </a>
