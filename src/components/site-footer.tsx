@@ -1,8 +1,11 @@
 import { profile } from "@/data/profile";
 import { socialLinks } from "@/data/social-links";
+import type { Locale } from "@/i18n/config";
 import { LinkIcon } from "@/components/icons/link-icon";
 
-export function SiteFooter() {
+export function SiteFooter({ locale }: { locale: Locale }) {
+  const linksHref = locale === "es" ? "/links" : "/en/links";
+
   return (
     <footer className="border-t border-rule px-6 py-10 md:px-24">
       <div className="mx-auto flex max-w-4xl flex-col-reverse items-center gap-6 md:flex-row md:justify-between">
@@ -24,7 +27,7 @@ export function SiteFooter() {
             </a>
           ))}
           <a
-            href="/links"
+            href={linksHref}
             aria-label="Linktree"
             className="text-ink-tertiary transition-colors hover:text-accent"
           >

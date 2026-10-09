@@ -1,14 +1,11 @@
 "use client";
 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-const sections = [
-  { id: "inicio", label: "Inicio" },
-  { id: "experiencia", label: "Experiencia" },
-  { id: "sobre-mi", label: "Sobre mí" },
-  { id: "recomendaciones", label: "Recomendaciones" },
-  { id: "contacto", label: "Contacto" },
-];
+type NavDictionary = Dictionary["nav"];
 
 function NavItem({
   id,
@@ -81,9 +78,25 @@ function MenuIcon({ open }: { open: boolean }) {
   );
 }
 
-export function SiteHeader() {
+export function SiteHeader({
+  nav,
+  otherLocaleHref,
+}: {
+  nav: NavDictionary;
+  otherLocaleHref: string;
+}) {
+  const router = useRouter();
   const [activeId, setActiveId] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const sections = nav.sections;
+
+  function handleLocaleClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    const hash = window.location.hash;
+    if (!hash) return;
+    e.preventDefault();
+    router.push(`${otherLocaleHref}${hash}`);
+  }
 
   useEffect(() => {
     const elements = sections
@@ -118,7 +131,7 @@ export function SiteHeader() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, []);
+  }, [sections]);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -131,10 +144,10 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-10 border-b border-rule bg-paper/90 backdrop-blur">
-      <div className="mx-auto flex max-w-4xl items-center justify-between py-4 px-6 md:px-0">
+      <div className="mx-auto flex max-w-4xl items-center justify-between gap-4 py-4 px-6 md:px-0">
         <a
-          href="#inicio"
-          aria-label="Volver arriba"
+          href="#home"
+          aria-label={nav.backToTop}
           className="flex h-9 w-9 shrink-0 items-center justify-center gap-0.5 rounded-lg border border-rule bg-surface-2 font-display text-xs font-extrabold text-ink"
         >
           <span>J</span>
@@ -142,29 +155,45 @@ export function SiteHeader() {
           <span>D</span>
         </a>
 
-        <nav aria-label="Secciones" className="hidden md:block">
-          <ul className="flex items-center gap-4 font-mono text-sm md:gap-6">
-            {sections.map(({ id, label }) => (
-              <NavItem key={id} id={id} label={label} isActive={activeId === id} />
-            ))}
-          </ul>
-        </nav>
+        <div className="flex items-center gap-4">
+          <nav aria-label={nav.ariaLabel} className="hidden md:block">
+            <ul className="flex items-center gap-4 font-mono text-sm md:gap-6">
+              {sections.map(({ id, label }) => (
+                <NavItem
+                  key={id}
+                  id={id}
+                  label={label}
+                  isActive={activeId === id}
+                />
+              ))}
+            </ul>
+          </nav>
 
-        <button
-          type="button"
-          onClick={() => setIsMenuOpen((open) => !open)}
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-nav"
-          aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
-          className="flex h-9 w-9 shrink-0 items-center justify-center text-ink-tertiary transition-colors hover:text-ink md:hidden"
-        >
-          <MenuIcon open={isMenuOpen} />
-        </button>
+          <Link
+            href={otherLocaleHref}
+            onClick={handleLocaleClick}
+            aria-label={nav.switchLanguage.ariaLabel}
+            className="flex h-9 items-center justify-center rounded-full border border-rule px-3 font-mono text-xs text-ink-tertiary transition-colors hover:border-accent hover:text-accent"
+          >
+            {nav.switchLanguage.label}
+          </Link>
+
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav"
+            aria-label={isMenuOpen ? nav.closeMenu : nav.openMenu}
+            className="flex h-9 w-9 shrink-0 items-center justify-center text-ink-tertiary transition-colors hover:text-ink md:hidden"
+          >
+            <MenuIcon open={isMenuOpen} />
+          </button>
+        </div>
       </div>
 
       {isMenuOpen && (
         <nav
-          aria-label="Secciones"
+          aria-label={nav.ariaLabel}
           id="mobile-nav"
           className="absolute inset-x-0 top-full border-t border-rule bg-paper/95 backdrop-blur md:hidden"
         >

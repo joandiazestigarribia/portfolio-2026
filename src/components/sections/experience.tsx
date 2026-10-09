@@ -1,37 +1,40 @@
-import { experience } from "@/data/experience";
+import type { Dictionary } from "@/i18n/dictionaries";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { TagPill } from "@/components/ui/tag-pill";
 
-function formatRange(start: string, end: string) {
+function formatRange(
+  start: string,
+  end: string,
+  months: string[],
+  presentLabel: string
+) {
   const label = (value: string) => {
-    if (value === "present") return "hoy";
+    if (value === "present") return presentLabel;
     const [year, month] = value.split("-");
-    const months = [
-      "ene", "feb", "mar", "abr", "may", "jun",
-      "jul", "ago", "sep", "oct", "nov", "dic",
-    ];
     return `${months[Number(month) - 1]} ${year}`;
   };
   return `${label(start)} — ${label(end)}`;
 }
 
-export function Experience() {
+export function Experience({ dict }: { dict: Dictionary }) {
+  const { heading, months, present, entries } = dict.experience;
+
   return (
     <section
-      id="experiencia"
+      id="experience"
       className="scroll-mt-20 border-b border-rule px-6 py-24 md:px-24 md:py-32"
     >
       <div className="mx-auto max-w-4xl">
-        <SectionHeading title="Experiencia" />
+        <SectionHeading title={heading} />
 
         <ol className="flex flex-col gap-16">
-          {experience.map((entry) => (
+          {entries.map((entry) => (
             <li
               key={entry.id}
               className="grid grid-cols-1 gap-3 md:grid-cols-[8rem_1fr] md:gap-16"
             >
               <p className="font-mono text-xs text-ink-tertiary md:pt-1">
-                {formatRange(entry.startDate, entry.endDate)}
+                {formatRange(entry.startDate, entry.endDate, months, present)}
               </p>
 
               <div>

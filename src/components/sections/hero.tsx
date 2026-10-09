@@ -1,11 +1,12 @@
 import { profile } from "@/data/profile";
 import { socialLinks } from "@/data/social-links";
+import type { Dictionary } from "@/i18n/dictionaries";
 import { HighlightedText } from "@/components/ui/highlighted-text";
 
-export function Hero() {
+export function Hero({ dict }: { dict: Dictionary }) {
   return (
     <section
-      id="inicio"
+      id="home"
       className="scroll-mt-20 border-b border-rule px-6 py-32 md:px-24 md:py-36"
     >
       <div className="mx-auto max-w-4xl">
@@ -13,7 +14,7 @@ export function Hero() {
           className="animate-rise-in font-mono text-sm text-ink-tertiary"
           style={{ animationDelay: "0ms" }}
         >
-          {profile.role} · {profile.experienceYears}
+          {profile.role} · {dict.profile.experienceYears}
         </p>
 
         <h1
@@ -29,7 +30,7 @@ export function Hero() {
           className="animate-rise-in mt-10 max-w-3xl text-lg text-ink-secondary md:text-xl font-light"
           style={{ animationDelay: "160ms" }}
         >
-          <HighlightedText text={profile.thesis} />
+          <HighlightedText text={dict.profile.thesis} />
         </p>
 
         <div
@@ -37,17 +38,17 @@ export function Hero() {
           style={{ animationDelay: "240ms" }}
         >
           <a
-            href="#contacto"
+            href="#contact"
             className="cta-glow rounded-full bg-accent px-10 py-2 font-mono text-sm text-paper"
           >
-            Contacto →
+            {dict.hero.contactCta}
           </a>
           <a
-            href={profile.cvHref}
+            href={dict.profile.cvHref}
             download
             className="rounded-full border border-rule-strong px-10 py-2 font-mono text-sm text-ink transition-colors hover:border-accent hover:text-accent"
           >
-            CV ↓
+            {dict.hero.cvCta}
           </a>
 
           <div className="flex items-center gap-4 md:border-l border-rule md:pl-6">

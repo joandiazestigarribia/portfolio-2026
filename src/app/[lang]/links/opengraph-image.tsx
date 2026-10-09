@@ -5,6 +5,6 @@ export const alt = `${profile.name} — Links`;
 export const size = ogImageSize;
 export const contentType = ogImageContentType;
 
-export default async function Image() {
+export default function Image() {
   return renderOgImage("Links");
 }
