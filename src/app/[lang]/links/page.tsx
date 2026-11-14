@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import type { ComponentType } from "react";
 import { profile } from "@/data/profile";
 import { DownloadIcon } from "@/components/icons/download-icon";
 import { GithubIcon } from "@/components/icons/github-icon";
@@ -42,12 +43,18 @@ export default async function LinksPage({
   const homeHref = locale === "es" ? "/" : "/en";
   const langSwitchHref = locale === "es" ? "/en/links" : "/links";
 
-  const links = [
+  const links: {
+    title: string;
+    subtitle: string;
+    href: string;
+    Icon: ComponentType<{ className?: string }>;
+    download?: string;
+  }[] = [
     {
       title: t.cvTitle,
       subtitle: t.cvSubtitle,
       href: dict.profile.cvHref,
-      download: true,
+      download: dict.profile.cvFileName,
       Icon: DownloadIcon,
     },
     {

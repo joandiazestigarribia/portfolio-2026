@@ -31,7 +31,7 @@ export function Experience({ dict }: { dict: Dictionary }) {
           {entries.map((entry) => (
             <li
               key={entry.id}
-              className="grid grid-cols-1 gap-3 md:grid-cols-[8rem_1fr] md:gap-16"
+              className="grid grid-cols-1 gap-3 md:grid-cols-[9rem_1fr] md:gap-16"
             >
               <p className="font-mono text-xs text-ink-tertiary md:pt-1">
                 {formatRange(entry.startDate, entry.endDate, months, present)}
@@ -41,8 +41,24 @@ export function Experience({ dict }: { dict: Dictionary }) {
                 <h3 className="font-display text-xl font-extrabold text-ink">
                   {entry.role}
                 </h3>
-                <p className="mt-1 font-mono text-sm text-accent">{entry.company}</p>
-                <p className="mt-3 max-w-2xl text-ink-secondary">{entry.summary}</p>
+                <p className="mt-1 font-mono text-sm text-accent">
+                  {entry.company}
+                  <span className="text-ink-tertiary"> · {entry.location}</span>
+                </p>
+                <ul className="mt-4 max-w-2xl space-y-2.5">
+                  {entry.highlights.map((highlight) => (
+                    <li
+                      key={highlight}
+                      className="relative pl-5 leading-relaxed text-ink-secondary"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="absolute left-0 top-[0.7em] size-1 -translate-y-1/2 rounded-full bg-accent"
+                      />
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {entry.tags.map((tag) => (
                     <TagPill key={tag}>{tag}</TagPill>

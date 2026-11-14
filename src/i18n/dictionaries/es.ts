@@ -28,16 +28,17 @@ export const es = {
   },
   profile: {
     cvHref: "/cv-joan-diaz-estigarribia.pdf",
+    cvFileName: "Joan Diaz Estigarribia - CV Fullstack ES.pdf",
     experienceYears: "+5 años",
     thesis:
       "Construyo interfaces prolijas, disfruto prestar atención a los detalles y tomar la **arquitectura de software como un arte**.",
     summary:
-      "Fullstack/Frontend Developer con base en React, Next.js, TypeScript y Node.js. 5 años armando productos web, del diseño al deploy.",
+      "Desarrollador Full Stack con más de 5 años de experiencia construyendo aplicaciones web escalables en producción. React, Next.js y TypeScript en frontend; Node.js, NestJS y PostgreSQL en backend.",
     about: {
       heading: "Sobre mí",
       intro: "Un poco de contexto.",
       paragraphs: [
-        "Soy Joan, developer fullstack con base en React, Next.js, TypeScript y Node.js, y 5 años armando productos web desde cero hasta producción.",
+        "Soy Joan, desarrollador full stack con base en React, Next.js, TypeScript y Node.js, y más de 5 años armando productos web desde cero hasta producción.",
         "Aprendí a pensar en performance, arquitectura y experiencia de usuario trabajando en plataformas de alto tráfico. Hoy sigo eligiendo aplicar esa misma disciplina a cualquier producto frontend o fullstack que construyo, con el mismo **cuidado por el detalle y la arquitectura limpia**.",
         "Fuera del código, seguramente me encuentres con unos mates viendo una película, o jugando al fútbol el fin de semana.",
       ],
@@ -62,38 +63,52 @@ export const es = {
     ],
     entries: [
       {
-        id: "innew-frontend",
+        id: "innew-fullstack",
         company: "INNEW Software Company",
-        role: "Frontend Web Developer",
+        role: "Desarrollador Full Stack",
+        location: "Resistencia, Chaco",
         startDate: "2021-09",
         endDate: "present",
-        summary:
-          "Trabajo en el frontend y backend de plataformas de ecommerce con tráfico alto, donde se presta mucha atención a la performance. Armo componentes reutilizables con React, TypeScript y Node, integro todo vía REST y GraphQL, y participo en las decisiones técnicas del equipo, code reviews incluidos. Más de una vez terminé liderando cuando hizo falta.",
+        highlights: [
+          "Implementé y mantuve más de 30 aplicaciones web en producción, construyendo componentes complejos con React y TypeScript.",
+          "Desarrollé middleware backend en Node.js y TypeScript con arquitectura multiplataforma, integrando APIs REST de terceros y webhooks.",
+          "Diseñé pipelines asíncronos (stock, precios, órdenes) sobre RabbitMQ, con workers, reintentos con backoff exponencial y Circuit Breaker ante rate limits.",
+          "Modelé bases de datos relacionales en MySQL con Prisma ORM (migraciones, índices, repositorios) y construí servicios transversales de caché, observabilidad y manejo de errores.",
+          "Optimicé performance en aplicaciones productivas (renderizado, lazy loading, tiempos de carga) y en procesos de alto volumen mediante streaming de datos.",
+          "Participé en decisiones técnicas, estimaciones y planificación SCRUM, asumiendo liderazgo en ausencia del Project Manager (coordinación de dailies y asignación de tareas).",
+        ],
         tags: [
           "React",
           "Next.js",
           "TypeScript",
           "Node.js",
-          "GraphQL",
-          "REST APIs",
+          "RabbitMQ",
+          "MySQL",
+          "Prisma",
           "VTEX IO",
         ],
       },
       {
-        id: "independent-fullstack",
-        company: "Proyectos independientes",
-        role: "Fullstack Developer",
+        id: "freelance-fullstack",
+        company: "Freelance · Proyectos independientes",
+        role: "Desarrollador Full Stack",
+        location: "Remoto",
         startDate: "2021-05",
         endDate: "present",
-        summary:
-          "Acá desarrollo todo por mi cuenta, desde el primer commit hasta el deploy: frontend con React y Next.js, API con Node.js y Nest.js, base de datos en PostgreSQL, y testing (unit y e2e) para asegurar la calidad. Empaqueto con Docker y despliego en la nube. Es el espacio donde tengo mayor libertad para diseñar la arquitectura como me parece correcto.",
+        highlights: [
+          "Arquitectura y desarrollo end-to-end de aplicaciones web con Next.js, React y TypeScript, desde el relevamiento hasta el despliegue en producción.",
+          "Diseño e implementación de APIs REST y servicios backend con Node.js y NestJS, con autenticación JWT y arquitectura modular.",
+          "Modelado de bases de datos relacionales en PostgreSQL con TypeORM y Prisma: migraciones, índices y consultas optimizadas.",
+          "Testing automatizado (unitario y E2E) con Vitest y Playwright, containerización con Docker y despliegues en Vercel y Railway bajo principios de clean architecture.",
+        ],
         tags: [
           "React",
           "Next.js",
           "TypeScript",
           "Node.js",
-          "Nest.js",
+          "NestJS",
           "PostgreSQL",
+          "Prisma",
           "Docker",
         ],
       },
@@ -146,7 +161,7 @@ export const es = {
     navLabel: "Redes y contacto",
     portfolioSubtitle: "Experiencia Profesional",
     cvTitle: "CV",
-    cvSubtitle: "Descargar PDF",
+    cvSubtitle: "Descargar PDF · Español",
     linkedinSubtitle: "Perfil profesional",
   },
 };

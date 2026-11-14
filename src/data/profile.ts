@@ -1,6 +1,6 @@
 export const profile = {
   name: "Joan Diaz Estigarribia",
-  role: "Fullstack / Frontend Developer",
+  role: "Full Stack Developer",
   email: "joan.diaz094@gmail.com",
   social: {
     github: "https://github.com/joandiazestigarribia",

@@ -45,7 +45,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
           </a>
           <a
             href={dict.profile.cvHref}
-            download
+            download={dict.profile.cvFileName}
             className="rounded-full border border-rule-strong px-10 py-2 font-mono text-sm text-ink transition-colors hover:border-accent hover:text-accent"
           >
             {dict.hero.cvCta}
